@@ -1,0 +1,11 @@
+fin = open('/home/zhangh/MyProject/FZHW/aid/B16_result.dat')
+fout = open('/home/zhangh/MyProject/FZHW/aid/B16_loc.dat','w')
+event = fin.readline()
+while event:
+    time,la,lo,d,m = event.split(',')
+    fout.write(lo+' '+la+' '+m.split('\n')[0]+' '+d+'\n')
+    event = fin.readline()
+    event = fin.readline()
+    event = fin.readline()
+fin.close()
+fout.close()
