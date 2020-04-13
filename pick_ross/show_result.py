@@ -9,7 +9,8 @@ from numba import jit
 
 ks_win = 500
 
-fin = open('/home/zhangh/MyProject/FZHW/pick_ross/B16_result.dat')
+fin = open('/home/zhangh/MyProject/FZHW/pick_ross/result.dat')
+event = fin.readline()
 phase = fin.readline()
 tp = fin.readline()
 num = 0
@@ -35,6 +36,7 @@ while phase:
     skew_d = diff3.diff(skew,0.01)
     
     p1 = plt.subplot(311)
+    plt.title(net+sta+time)
     p1.plot(t_scale,dataz[499:])
     p1.axvline(tp,color='black',lw=1)
     p1.axvline(0,color='black',lw=1)
@@ -47,7 +49,7 @@ while phase:
     p3.axvline(tp,color='black',lw=1)
     p3.axvline(0,color='black',lw=1)
     plt.show()
-
+    event = fin.readline()
     phase = fin.readline()
     tp = fin.readline()
 fin.close()

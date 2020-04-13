@@ -50,9 +50,10 @@ while record:
             else:
                 tp = i-1
             tp = round(tp/100-0.2,2)
-            fout.write(event)
-            fout.write(record)
-            fout.write(str(tp)+'\n')
+            if tp>0.05:
+                fout.write(event)
+                fout.write(record)
+                fout.write(str(tp)+'\n')
         record = fin1.readline()
 fin1.close()
 fin2.close()
