@@ -30,25 +30,26 @@ def ltp(st):
         result[i] = right_sum*(i+short_win)/(left_sum*(l-i-short_win))
     return result
 '''
-def get_t(stx,t0):
+
+
+def get_t(stx, t0):
     stx = stx.tolist()
     min_win = 100
-    max_win_right,max_win_left = 80,100
+    max_win_right, max_win_left = 80, 100
     st_min = stx[t0-min_win:t0+min_win]
-    for i in range(2*(min_win)):
-        st_min[i]=st_min[i]-i/800
+    for i in range(2 * min_win):
+        st_min[i] = st_min[i]-i/800
     min_value = min(st_min)
     min_t = st_min.index(min_value)
     min_t_abs = t0-min_win+min_t
-    #left_max
+    # left_max
     pca_left = stx[min_t_abs-max_win_left:min_t_abs]
     for i in range(max_win_left):
         pca_left[i] = pca_left[i]+i/600
     max_t_left = pca_left.index(max(pca_left))+min_t_abs-max_win_left
-    #right_max
+    # right_max
     pca_right = stx[min_t_abs:min_t_abs+max_win_right]
     for i in range(max_win_right):
         pca_right[i] = pca_right[i]-i/800
     max_t_right = pca_right.index(max(pca_right))+min_t_abs
-    return min_t_abs,max_t_left,max_t_right     
-    
+    return min_t_abs, max_t_left, max_t_right
